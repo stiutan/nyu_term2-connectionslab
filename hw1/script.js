@@ -137,7 +137,7 @@ function setupAudio(){
     synth = new Tone.MembraneSynth({
         pitchDecay: 0.02,
         octaves: 2,
-        envelope: { attack: 0.001, decay: 0.16, sustain: 0 }
+        envelope: { attack: 0.001, decay: 0.16, sustain: 0, release: 0.01 }
     }).toDestination();
     synth.volume.value = -4;
 }

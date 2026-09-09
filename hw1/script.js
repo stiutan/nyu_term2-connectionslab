@@ -111,6 +111,8 @@ document.querySelectorAll('.beat-options button').forEach((button) => {
             ? `assets/empty_${beatNum}.jpg`
             : `assets/${ingredient}.jpg`;
 
+        await beatImages.get(imgSrc)?.ready;
+
         // need to sync both beat 4's
         document.querySelectorAll(`.content-beat[data-beat="${beatNum}"]`).forEach((beat) => {
             beat.dataset.ingredient = ingredient;
@@ -158,7 +160,7 @@ function buildSequence(){
         });
     });
  
-    part = new Tone.Part((time, ev)=>{
+    part = new Tone.Part((time) => {
         synth.triggerAttackRelease('C1', '16n', time, 0.9);
     }, events.map(e=>[e.time, e]));
  

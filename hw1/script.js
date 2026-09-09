@@ -135,7 +135,7 @@ let synth, part;
 function setupAudio(){
     // use membrane synth for drum-like sounds
     synth = new Tone.MembraneSynth({
-        pitchDecay: 0.008,
+        pitchDecay: 0.02,
         octaves: 2,
         envelope: { attack: 0.001, decay: 0.16, sustain: 0 }
     }).toDestination();
@@ -159,7 +159,7 @@ function buildSequence(){
     });
  
     part = new Tone.Part((time, ev)=>{
-        synth.triggerAttackRelease('C2', '16n', time, 0.9);
+        synth.triggerAttackRelease('C1', '16n', time, 0.9);
     }, events.map(e=>[e.time, e]));
  
     part.loop = true;

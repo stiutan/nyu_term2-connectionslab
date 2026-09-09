@@ -1,7 +1,7 @@
-$background-color-gray: #f5f5f5;
+$background-color-gray: #faf7f7;
 $text-color-black: #000;
-$text-color-darkgray: #666;
-$text-color-lightgray: #999;
+$text-color-darkgray: #828181;
+$text-color-lightgray: #b5b3b3;
 
 @mixin animate-beat-box($count, $selector, $duration: 250ms) {
     #{$selector} {
@@ -104,7 +104,7 @@ body {
             min-width: 32px;
             height: 1px;
             margin: 0;
-            background: $text-color-lightgray;
+            background: #dedcdc;
             cursor: pointer;
 
             &::-webkit-slider-thumb {

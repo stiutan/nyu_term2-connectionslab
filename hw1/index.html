@@ -1,147 +1,381 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <!-- set favicon to chef hat emoji hehehe -->
-        <link rel="icon" href="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🍽️%3C/text%3E%3C/svg%3E">
-        <link rel="stylesheet" href="styles/style.css">
+  <head>
+    <!-- set favicon to chef hat emoji hehehe -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🍽️%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles/style.css" />
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
-        <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="script.js" defer></script>
 
-        <title>A Recipe For Drummers</title>
-    </head>
-    <body>
-        <div class="main">
-            <div class="topbar">
-                <div class="topbar-pill topbar-maincontrols">
-                    <div class="topbar-pill-label topbar-logo">A Recipe For <s>Disaster</s> Drummers</div>
-                    <div class="topbar-pill-selections topbar-maincontrols-buttons">
-                        <button type="button" class="topbar-maincontrols-playbtn">Play</button>
-                        <button type="button" class="topbar-maincontrols-ingredientsdropdown" aria-pressed="false">Ingredient List</button>
-                    </div>
-                </div>
-                <div class="topbar-pill topbar-servingsize">
-                    <div class="topbar-pill-label topbar-servingsize-label">Serving Size</div>
-                    <div class="topbar-pill-selections topbar-servingsize-options">
-                        <button type="button" class="topbar-servingsize-option topbar-servingsize-3-4" aria-pressed="false">3/4</button>
-                        <button type="button" class="topbar-servingsize-option topbar-servingsize-4-4" aria-pressed="true">4/4</button>
-                        <button type="button" class="topbar-servingsize-option topbar-servingsize-6-4" aria-pressed="false">6/8</button>
-                    </div>
-                </div>
-                <div class="topbar-pill topbar-preptime">
-                    <label class="topbar-pill-label topbar-preptime-label">Prep Time</label>
-                    <div class="topbar-pill-selections topbar-preptime-slider">
-                        <input type="range" class="topbar-preptime-sliderinput" min="60" max="160" value="100" />
-                        <output class="topbar-preptime-slidervalue">100 bpm</output>
-                    </div>
-                </div>
-            </div>
-            <div class="content">
-                <div class="content-beats" data-beats="4">
-                    <div class="content-beat content-row-1 ingredient-list-expanded" aria-hidden="true">
-                        <div class="ingredient-row">
-                            <div class="ingredient-list-emoji">🍐</div>
-                            <div class="ingredient-list-syllables">pear</div>
-                            <div class="ingredient-list-notes">one quarter note</div>
-                        </div>
-                        <div class="ingredient-row">
-                            <div class="ingredient-list-emoji">🍎</div>
-                            <div class="ingredient-list-syllables">ap–ple</div>
-                            <div class="ingredient-list-notes">two eighth notes</div>
-                        </div>
-                        <div class="ingredient-row">
-                            <div class="ingredient-list-emoji">🫐</div>
-                            <div class="ingredient-list-syllables">blue—be–rry</div>
-                            <div class="ingredient-list-notes">one eighth + two sixteenth</div>
-                        </div>
-                        <div class="ingredient-row">
-                            <div class="ingredient-list-emoji">🥥</div>
-                            <div class="ingredient-list-syllables">co–co—nut</div>
-                            <div class="ingredient-list-notes">two sixteenth + one eighth</div>
-                        </div>
-                        <div class="ingredient-row">
-                            <div class="ingredient-list-emoji">🍉</div>
-                            <div class="ingredient-list-syllables">wa–ter–me–lon</div>
-                            <div class="ingredient-list-notes">four sixteenth notes</div>
-                        </div>
-                        <div class="ingredient-instructions">
-                            <p>Try picking some ingredients out to see what groovy beats you might cook up!</p>
-                            <p>Click 'Play' and turn up your volume for the full experience.</p>
-                        </div>
-
-                    </div>
-                    <div class="content-beat content-row-1 content-beat-4" data-beat="4" data-ingredient="empty">
-                        <div class="beat-options">
-                            <button type="button" data-ingredient="empty" aria-pressed="true">🍽️</button>
-                            <button type="button" data-ingredient="pear" aria-pressed="false">🍐</button>
-                            <button type="button" data-ingredient="apple" aria-pressed="false">🍎</button>
-                            <button type="button" data-ingredient="blueberry" aria-pressed="false">🫐</button>
-                            <button type="button" data-ingredient="coconut" aria-pressed="false">🥥</button>
-                            <button type="button" data-ingredient="watermelon" aria-pressed="false">🍉</button>
-                        </div>
-                    </div>
-                    <div class="content-beat content-row-1 content-beat-5" data-beat="5" data-ingredient="empty">
-                        <div class="beat-options">
-                            <button type="button" data-ingredient="empty" aria-pressed="true">🍽️</button>
-                            <button type="button" data-ingredient="pear" aria-pressed="false">🍐</button>
-                            <button type="button" data-ingredient="apple" aria-pressed="false">🍎</button>
-                            <button type="button" data-ingredient="blueberry" aria-pressed="false">🫐</button>
-                            <button type="button" data-ingredient="coconut" aria-pressed="false">🥥</button>
-                            <button type="button" data-ingredient="watermelon" aria-pressed="false">🍉</button>
-                        </div>
-                    </div>
-                    <div class="content-beat content-row-1 content-beat-6" data-beat="6" data-ingredient="empty">
-                        <div class="beat-options">
-                            <button type="button" data-ingredient="empty" aria-pressed="true">🍽️</button>
-                            <button type="button" data-ingredient="pear" aria-pressed="false">🍐</button>
-                            <button type="button" data-ingredient="apple" aria-pressed="false">🍎</button>
-                            <button type="button" data-ingredient="blueberry" aria-pressed="false">🫐</button>
-                            <button type="button" data-ingredient="coconut" aria-pressed="false">🥥</button>
-                            <button type="button" data-ingredient="watermelon" aria-pressed="false">🍉</button>
-                        </div>
-                    </div>
-                    <div class="content-beat content-row-2 content-beat-1" data-beat="1" data-ingredient="empty">
-                        <div class="beat-options">
-                            <button type="button" data-ingredient="empty" aria-pressed="true">🍽️</button>
-                            <button type="button" data-ingredient="pear" aria-pressed="false">🍐</button>
-                            <button type="button" data-ingredient="apple" aria-pressed="false">🍎</button>
-                            <button type="button" data-ingredient="blueberry" aria-pressed="false">🫐</button>
-                            <button type="button" data-ingredient="coconut" aria-pressed="false">🥥</button>
-                            <button type="button" data-ingredient="watermelon" aria-pressed="false">🍉</button>
-                        </div>
-                    </div>
-                    <div class="content-beat content-row-2 content-beat-2" data-beat="2" data-ingredient="empty">
-                        <div class="beat-options">
-                            <button type="button" data-ingredient="empty" aria-pressed="true">🍽️</button>
-                            <button type="button" data-ingredient="pear" aria-pressed="false">🍐</button>
-                            <button type="button" data-ingredient="apple" aria-pressed="false">🍎</button>
-                            <button type="button" data-ingredient="blueberry" aria-pressed="false">🫐</button>
-                            <button type="button" data-ingredient="coconut" aria-pressed="false">🥥</button>
-                            <button type="button" data-ingredient="watermelon" aria-pressed="false">🍉</button>
-                        </div>
-                    </div>
-                    <div class="content-beat content-row-2 content-beat-3" data-beat="3" data-ingredient="empty">
-                        <div class="beat-options">
-                            <button type="button" data-ingredient="empty" aria-pressed="true">🍽️</button>
-                            <button type="button" data-ingredient="pear" aria-pressed="false">🍐</button>
-                            <button type="button" data-ingredient="apple" aria-pressed="false">🍎</button>
-                            <button type="button" data-ingredient="blueberry" aria-pressed="false">🫐</button>
-                            <button type="button" data-ingredient="coconut" aria-pressed="false">🥥</button>
-                            <button type="button" data-ingredient="watermelon" aria-pressed="false">🍉</button>
-                        </div>
-                    </div>
-                    <div class="content-beat content-row-2 content-beat-4" data-beat="4" data-ingredient="empty">
-                        <div class="beat-options">
-                            <button type="button" data-ingredient="empty" aria-pressed="true">🍽️</button>
-                            <button type="button" data-ingredient="pear" aria-pressed="false">🍐</button>
-                            <button type="button" data-ingredient="apple" aria-pressed="false">🍎</button>
-                            <button type="button" data-ingredient="blueberry" aria-pressed="false">🫐</button>
-                            <button type="button" data-ingredient="coconut" aria-pressed="false">🥥</button>
-                            <button type="button" data-ingredient="watermelon" aria-pressed="false">🍉</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <title>A Recipe For Drummers</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="topbar">
+        <div class="topbar-pill topbar-maincontrols">
+          <div class="topbar-pill-label topbar-logo">
+            A Recipe For <s>Disaster</s> Drummers
+          </div>
+          <div class="topbar-pill-selections topbar-maincontrols-buttons">
+            <button type="button" class="topbar-maincontrols-playbtn">
+              Play
+            </button>
+            <button
+              type="button"
+              class="topbar-maincontrols-ingredientsdropdown"
+              aria-pressed="false">
+              Ingredient List
+            </button>
+          </div>
         </div>
-    </body>
+        <div class="topbar-pill topbar-servingsize">
+          <div class="topbar-pill-label topbar-servingsize-label">
+            Serving Size
+          </div>
+          <div class="topbar-pill-selections topbar-servingsize-options">
+            <button
+              type="button"
+              class="topbar-servingsize-option topbar-servingsize-3-4"
+              aria-pressed="false">
+              3/4
+            </button>
+            <button
+              type="button"
+              class="topbar-servingsize-option topbar-servingsize-4-4"
+              aria-pressed="true">
+              4/4
+            </button>
+            <button
+              type="button"
+              class="topbar-servingsize-option topbar-servingsize-6-4"
+              aria-pressed="false">
+              6/8
+            </button>
+          </div>
+        </div>
+        <div class="topbar-pill topbar-preptime">
+          <label class="topbar-pill-label topbar-preptime-label"
+            >Prep Time</label
+          >
+          <div class="topbar-pill-selections topbar-preptime-slider">
+            <input
+              type="range"
+              class="topbar-preptime-sliderinput"
+              min="60"
+              max="160"
+              value="100" />
+            <output class="topbar-preptime-slidervalue">100 bpm</output>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="content-beats" data-beats="4">
+          <div
+            class="content-beat content-row-1 ingredient-list-expanded"
+            aria-hidden="true">
+            <div class="ingredient-row">
+              <div class="ingredient-list-emoji">🍐</div>
+              <div class="ingredient-list-syllables">pear</div>
+              <div class="ingredient-list-notes">one quarter note</div>
+            </div>
+            <div class="ingredient-row">
+              <div class="ingredient-list-emoji">🍎</div>
+              <div class="ingredient-list-syllables">ap–ple</div>
+              <div class="ingredient-list-notes">two eighth notes</div>
+            </div>
+            <div class="ingredient-row">
+              <div class="ingredient-list-emoji">🫐</div>
+              <div class="ingredient-list-syllables">blue—be–rry</div>
+              <div class="ingredient-list-notes">
+                one eighth + two sixteenth
+              </div>
+            </div>
+            <div class="ingredient-row">
+              <div class="ingredient-list-emoji">🥥</div>
+              <div class="ingredient-list-syllables">co–co—nut</div>
+              <div class="ingredient-list-notes">
+                two sixteenth + one eighth
+              </div>
+            </div>
+            <div class="ingredient-row">
+              <div class="ingredient-list-emoji">🍉</div>
+              <div class="ingredient-list-syllables">wa–ter–me–lon</div>
+              <div class="ingredient-list-notes">four sixteenth notes</div>
+            </div>
+            <div class="ingredient-instructions">
+              <p>
+                Try picking some ingredients out to see what groovy beats you
+                might cook up!
+              </p>
+              <p>
+                Click 'Play' and turn up your volume for the full experience.
+              </p>
+            </div>
+          </div>
+          <div
+            class="content-beat content-row-1 content-beat-4"
+            data-beat="4"
+            data-ingredient="empty">
+            <div class="beat-options">
+              <button type="button" data-ingredient="empty" aria-pressed="true">
+                🍽️
+              </button>
+              <button type="button" data-ingredient="pear" aria-pressed="false">
+                🍐
+              </button>
+              <button
+                type="button"
+                data-ingredient="apple"
+                aria-pressed="false">
+                🍎
+              </button>
+              <button
+                type="button"
+                data-ingredient="blueberry"
+                aria-pressed="false">
+                🫐
+              </button>
+              <button
+                type="button"
+                data-ingredient="coconut"
+                aria-pressed="false">
+                🥥
+              </button>
+              <button
+                type="button"
+                data-ingredient="watermelon"
+                aria-pressed="false">
+                🍉
+              </button>
+            </div>
+          </div>
+          <div
+            class="content-beat content-row-1 content-beat-5"
+            data-beat="5"
+            data-ingredient="empty">
+            <div class="beat-options">
+              <button type="button" data-ingredient="empty" aria-pressed="true">
+                🍽️
+              </button>
+              <button type="button" data-ingredient="pear" aria-pressed="false">
+                🍐
+              </button>
+              <button
+                type="button"
+                data-ingredient="apple"
+                aria-pressed="false">
+                🍎
+              </button>
+              <button
+                type="button"
+                data-ingredient="blueberry"
+                aria-pressed="false">
+                🫐
+              </button>
+              <button
+                type="button"
+                data-ingredient="coconut"
+                aria-pressed="false">
+                🥥
+              </button>
+              <button
+                type="button"
+                data-ingredient="watermelon"
+                aria-pressed="false">
+                🍉
+              </button>
+            </div>
+          </div>
+          <div
+            class="content-beat content-row-1 content-beat-6"
+            data-beat="6"
+            data-ingredient="empty">
+            <div class="beat-options">
+              <button type="button" data-ingredient="empty" aria-pressed="true">
+                🍽️
+              </button>
+              <button type="button" data-ingredient="pear" aria-pressed="false">
+                🍐
+              </button>
+              <button
+                type="button"
+                data-ingredient="apple"
+                aria-pressed="false">
+                🍎
+              </button>
+              <button
+                type="button"
+                data-ingredient="blueberry"
+                aria-pressed="false">
+                🫐
+              </button>
+              <button
+                type="button"
+                data-ingredient="coconut"
+                aria-pressed="false">
+                🥥
+              </button>
+              <button
+                type="button"
+                data-ingredient="watermelon"
+                aria-pressed="false">
+                🍉
+              </button>
+            </div>
+          </div>
+          <div
+            class="content-beat content-row-2 content-beat-1"
+            data-beat="1"
+            data-ingredient="empty">
+            <div class="beat-options">
+              <button type="button" data-ingredient="empty" aria-pressed="true">
+                🍽️
+              </button>
+              <button type="button" data-ingredient="pear" aria-pressed="false">
+                🍐
+              </button>
+              <button
+                type="button"
+                data-ingredient="apple"
+                aria-pressed="false">
+                🍎
+              </button>
+              <button
+                type="button"
+                data-ingredient="blueberry"
+                aria-pressed="false">
+                🫐
+              </button>
+              <button
+                type="button"
+                data-ingredient="coconut"
+                aria-pressed="false">
+                🥥
+              </button>
+              <button
+                type="button"
+                data-ingredient="watermelon"
+                aria-pressed="false">
+                🍉
+              </button>
+            </div>
+          </div>
+          <div
+            class="content-beat content-row-2 content-beat-2"
+            data-beat="2"
+            data-ingredient="empty">
+            <div class="beat-options">
+              <button type="button" data-ingredient="empty" aria-pressed="true">
+                🍽️
+              </button>
+              <button type="button" data-ingredient="pear" aria-pressed="false">
+                🍐
+              </button>
+              <button
+                type="button"
+                data-ingredient="apple"
+                aria-pressed="false">
+                🍎
+              </button>
+              <button
+                type="button"
+                data-ingredient="blueberry"
+                aria-pressed="false">
+                🫐
+              </button>
+              <button
+                type="button"
+                data-ingredient="coconut"
+                aria-pressed="false">
+                🥥
+              </button>
+              <button
+                type="button"
+                data-ingredient="watermelon"
+                aria-pressed="false">
+                🍉
+              </button>
+            </div>
+          </div>
+          <div
+            class="content-beat content-row-2 content-beat-3"
+            data-beat="3"
+            data-ingredient="empty">
+            <div class="beat-options">
+              <button type="button" data-ingredient="empty" aria-pressed="true">
+                🍽️
+              </button>
+              <button type="button" data-ingredient="pear" aria-pressed="false">
+                🍐
+              </button>
+              <button
+                type="button"
+                data-ingredient="apple"
+                aria-pressed="false">
+                🍎
+              </button>
+              <button
+                type="button"
+                data-ingredient="blueberry"
+                aria-pressed="false">
+                🫐
+              </button>
+              <button
+                type="button"
+                data-ingredient="coconut"
+                aria-pressed="false">
+                🥥
+              </button>
+              <button
+                type="button"
+                data-ingredient="watermelon"
+                aria-pressed="false">
+                🍉
+              </button>
+            </div>
+          </div>
+          <div
+            class="content-beat content-row-2 content-beat-4"
+            data-beat="4"
+            data-ingredient="empty">
+            <div class="beat-options">
+              <button type="button" data-ingredient="empty" aria-pressed="true">
+                🍽️
+              </button>
+              <button type="button" data-ingredient="pear" aria-pressed="false">
+                🍐
+              </button>
+              <button
+                type="button"
+                data-ingredient="apple"
+                aria-pressed="false">
+                🍎
+              </button>
+              <button
+                type="button"
+                data-ingredient="blueberry"
+                aria-pressed="false">
+                🫐
+              </button>
+              <button
+                type="button"
+                data-ingredient="coconut"
+                aria-pressed="false">
+                🥥
+              </button>
+              <button
+                type="button"
+                data-ingredient="watermelon"
+                aria-pressed="false">
+                🍉
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

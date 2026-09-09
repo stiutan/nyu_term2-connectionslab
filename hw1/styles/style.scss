@@ -4,294 +4,300 @@ $text-color-darkgray: #828181;
 $text-color-lightgray: #b5b3b3;
 
 @mixin animate-beat-box($count, $selector, $duration: 250ms) {
-    #{$selector} {
-        opacity: 1;
-        visibility: visible;
-        transition: opacity $duration ease, visibility 0s;
-    }
+  #{$selector} {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity $duration ease,
+      visibility 0s;
+  }
 
-    &:not([data-beats="#{$count}"]) {
-        #{$selector} {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: opacity $duration ease, visibility 0s $duration;
-        }
+  &:not([data-beats="#{$count}"]) {
+    #{$selector} {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity $duration ease,
+        visibility 0s $duration;
     }
+  }
 }
 
 body {
-    box-sizing: border-box;
-    margin: 0;
-    height: 100vh;
-    font-family: Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  height: 100vh;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .main {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .topbar {
-    padding: 12px;
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: 12px;
-    flex: none;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 12px;
+  flex: none;
+  align-items: center;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+
+  .topbar-pill {
+    min-height: 16px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: $background-color-gray;
+    display: flex;
     align-items: center;
-    font-size: 12px;
-    letter-spacing: 0.08em;
+    justify-content: space-between;
+    gap: 16px;
 
-    .topbar-pill {
-        min-height: 16px;
-        padding: 10px 20px;
-        border-radius: 999px;
-        background: $background-color-gray;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        
-        &-label {
-            flex-shrink: 0;
-            white-space: nowrap;
-        }
-    
-        &-selections {
-            display: flex;
-            justify-content: flex-end;
-            gap: 12px;
-            font-size: 11px;
-            white-space: nowrap;
-        }
+    &-label {
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
+    &-selections {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+  }
 
-    .topbar-logo {
-        font-weight: 600;
-        text-transform: uppercase;
+  .topbar-logo {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  button {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: $text-color-lightgray;
+    font: inherit;
+    letter-spacing: inherit;
+    cursor: pointer;
+    transition: color 100ms ease;
+
+    &:hover {
+      color: $text-color-darkgray;
     }
 
-    button {
+    &:active,
+    &[aria-pressed="true"] {
+      color: $text-color-black;
+    }
+  }
+
+  .topbar-preptime-slider {
+    align-items: center;
+
+    &input {
+      appearance: none;
+      width: 80px;
+      min-width: 32px;
+      height: 1px;
+      margin: 0;
+      background: #dedcdc;
+      cursor: pointer;
+
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
         appearance: none;
+        width: 5px;
+        height: 5px;
         border: 0;
-        padding: 0;
-        background: transparent;
-        color: $text-color-lightgray;
-        font: inherit;
-        letter-spacing: inherit;
-        cursor: pointer;
-        transition: color 100ms ease;
+        border-radius: 50%;
+        background: $text-color-black;
+      }
 
-        &:hover {
-            color: $text-color-darkgray;
-        }
-
-        &:active,
-        &[aria-pressed="true"] {
-            color: $text-color-black;
-        }
+      &::-moz-range-thumb {
+        width: 5px;
+        height: 5px;
+        border: 0;
+        border-radius: 50%;
+        background: $text-color-black;
+      }
     }
 
-    .topbar-preptime-slider {
-        align-items: center;
-        
-        &input {
-            appearance: none;
-            width: 80px;
-            min-width: 32px;
-            height: 1px;
-            margin: 0;
-            background: #dedcdc;
-            cursor: pointer;
-
-            &::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 5px;
-                height: 5px;
-                border: 0;
-                border-radius: 50%;
-                background: $text-color-black;
-            }
-
-            &::-moz-range-thumb {
-                width: 5px;
-                height: 5px;
-                border: 0;
-                border-radius: 50%;
-                background: $text-color-black;
-            }
-        }
-
-        &value {
-            min-width: 8ch; 
-            text-align: end;
-            font-variant-numeric: tabular-nums;
-
-        }
+    &value {
+      min-width: 8ch;
+      text-align: end;
+      font-variant-numeric: tabular-nums;
     }
+  }
 }
 
 .content {
-    flex: 1;
-    min-height: 0;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+
+  &-beats {
+    @include animate-beat-box(
+      6,
+      ".content-row-1.content-beat-4, .content-row-1.content-beat-5, .content-row-1.content-beat-6"
+    );
+    @include animate-beat-box(4, ".content-row-2.content-beat-4");
+
     display: grid;
+    gap: 12px;
+    padding: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    min-height: 0;
 
-    &-beats {
-        @include animate-beat-box(6, '.content-row-1.content-beat-4, .content-row-1.content-beat-5, .content-row-1.content-beat-6');
-        @include animate-beat-box(4, '.content-row-2.content-beat-4');
+    .content-beat {
+      border-radius: 60px;
+      background-color: $background-color-gray;
+      background-size: cover;
+      background-position: center;
 
-        display: grid;
+      &:not(.ingredient-list-expanded) {
+        position: relative;
+        overflow: hidden;
+
+        &:hover .beat-options {
+          opacity: 1;
+        }
+      }
+
+      .beat-options {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-content: center;
         gap: 12px;
-        padding: 12px;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        grid-template-rows: repeat(2, minmax(0, 1fr));
-        min-height: 0;
+        padding: 24px;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        transition: opacity 200ms ease;
 
-        .content-beat {
-            border-radius: 60px;
-            background-color: $background-color-gray;
-            background-size: cover;
-            background-position: center;
+        button {
+          appearance: none;
+          border: 0;
+          padding: 4px;
+          background: transparent;
+          font-size: 24px;
+          line-height: 1;
+          opacity: 0.5;
+          transition: opacity 150ms ease;
 
-            &:not(.ingredient-list-expanded) {
-                position: relative;
-                overflow: hidden;
-
-                &:hover .beat-options {
-                    opacity: 1;
-                }
-            }
-
-            .beat-options {
-                position: absolute;
-                inset: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-wrap: wrap;
-                align-content: center;
-                gap: 12px;
-                padding: 24px;
-                background: rgba(0, 0, 0, 0.4);
-                opacity: 0;
-                transition: opacity 200ms ease;
-
-                button {
-                    appearance: none;
-                    border: 0;
-                    padding: 4px;
-                    background: transparent;
-                    font-size: 24px;
-                    line-height: 1;
-                    opacity: 0.5;
-                    transition: opacity 150ms ease;
-
-                    &:hover {
-                        opacity: 1;
-                        cursor: grab;
-                    }
-
-                    &:active,
-                    &[aria-pressed="true"] {
-                        opacity: 1;
-                        cursor: grabbing;
-                    }
-                }
-            }
-        }
-
-        .ingredient-list-expanded {
-            box-sizing: border-box;
-            width: 100%;
-            height: fit-content;
-            max-height: 100%;
-            // align-self: start;
-            padding: 32px 24px;
-            font-size: 11px;
-            // letter-spacing: 0.08em;
-            line-height: 1.25;
-            overflow: auto;
-            display: flex;
-            flex-direction: column;
+          &:hover {
             opacity: 1;
-            visibility: visible;
-            transition: opacity 250ms ease, visibility 0s;
+            cursor: grab;
+          }
 
-            &[aria-hidden="true"] {
-                opacity: 0;
-                visibility: hidden;
-                pointer-events: none;
-                transition: opacity 250ms ease, visibility 0s 250ms;
-            }
-
-            .ingredient-row {
-                padding: 8px 0;
-                flex-shrink: 0;
-                display: grid;
-                grid-template-columns: minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1.5fr);
-                gap: 12px;
-                align-items: center;
-                font-size: 11px;
-                
-                + .ingredient-row {
-                    border-top: 1px solid #efefef;
-                }
-
-                .ingredient-list-emoji,
-                .ingredient-list-syllables {
-                    color: $text-color-black;
-                }
-
-                .ingredient-list-notes {
-                    color: $text-color-lightgray;
-                    white-space: normal;
-                }
-            }
-
-            .ingredient-instructions {
-                padding-top: 24px;
-                font-size: 12px;
-
-                p {
-                    text-wrap: pretty;
-                }
-            }
+          &:active,
+          &[aria-pressed="true"] {
+            opacity: 1;
+            cursor: grabbing;
+          }
         }
-
-        .content-row-1 {
-            &.ingredient-list-expanded {
-                grid-row: 1;
-                grid-column: 1;
-            }
-
-            @for $num from 4 through 6 {
-                &.content-beat-#{$num} {
-                    grid-row: 1;
-                    grid-column: $num - 2;
-                }
-            }
-
-        }
-
-        .content-row-2 {
-            @for $num from 1 through 4 {
-                &.content-beat-#{$num} {
-                    grid-row: 2;
-                    grid-column: $num;
-                }
-            }
-
-        }
+      }
     }
 
-    @for $num from 1 through 6 {
-        &-beat-#{$num} {
-            background-image: url('../assets/empty_#{$num}.jpg');
+    .ingredient-list-expanded {
+      box-sizing: border-box;
+      width: 100%;
+      height: fit-content;
+      max-height: 100%;
+      // align-self: start;
+      padding: 32px 24px;
+      font-size: 11px;
+      // letter-spacing: 0.08em;
+      line-height: 1.25;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      opacity: 1;
+      visibility: visible;
+      transition:
+        opacity 250ms ease,
+        visibility 0s;
+
+      &[aria-hidden="true"] {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 250ms ease,
+          visibility 0s 250ms;
+      }
+
+      .ingredient-row {
+        padding: 8px 0;
+        flex-shrink: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 0.5fr) minmax(0, 1fr) minmax(0, 1.5fr);
+        gap: 12px;
+        align-items: center;
+        font-size: 11px;
+
+        + .ingredient-row {
+          border-top: 1px solid #efefef;
         }
+
+        .ingredient-list-emoji,
+        .ingredient-list-syllables {
+          color: $text-color-black;
+        }
+
+        .ingredient-list-notes {
+          color: $text-color-lightgray;
+          white-space: normal;
+        }
+      }
+
+      .ingredient-instructions {
+        padding-top: 24px;
+        font-size: 12px;
+
+        p {
+          text-wrap: pretty;
+        }
+      }
     }
 
+    .content-row-1 {
+      &.ingredient-list-expanded {
+        grid-row: 1;
+        grid-column: 1;
+      }
+
+      @for $num from 4 through 6 {
+        &.content-beat-#{$num} {
+          grid-row: 1;
+          grid-column: $num - 2;
+        }
+      }
+    }
+
+    .content-row-2 {
+      @for $num from 1 through 4 {
+        &.content-beat-#{$num} {
+          grid-row: 2;
+          grid-column: $num;
+        }
+      }
+    }
+  }
+
+  @for $num from 1 through 6 {
+    &-beat-#{$num} {
+      background-image: url("../assets/empty_#{$num}.jpg");
+    }
+  }
 }

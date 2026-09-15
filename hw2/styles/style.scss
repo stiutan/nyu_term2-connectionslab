@@ -1,0 +1,185 @@
+$background-color: #0c0c0c;
+
+$text-color: #a3a3a3;
+$text-color-hover: #e7d060;
+$text-color-active: #c7a82c;
+
+body {
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: $background-color;
+  color: $text-color;
+  font-family: "Gabarito", sans-serif;
+  font-size: 1em;
+}
+
+.main-container {
+  position: relative;
+  height: 100%;
+}
+
+.loading-container {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.img-container-outer {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  .img-container-inner {
+    position: relative;
+    flex: none;
+    height: 166.6667vh;
+    aspect-ratio: 1170 / 2532;
+
+    .img {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      cursor: pointer;
+      transition: opacity 300ms ease-in-out;
+      opacity: 0;
+      pointer-events: none;
+
+      &.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
+.text-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--text-container-width, 25%);
+  pointer-events: none;
+
+  &--lights-on {
+    left: 0;
+
+    .there {
+      top: 13.5%;
+      left: 13%;
+    }
+    .were {
+      top: 17.5%;
+      left: 25%;
+    }
+    .two {
+      top: 30%;
+      left: 61%;
+    }
+    .shadows {
+      top: 34%;
+      left: 41%;
+    }
+    .and {
+      top: 49%;
+      left: 23%;
+    }
+    .only {
+      top: 65%;
+      left: 42%;
+    }
+    .one {
+      top: 69%;
+      left: 55%;
+    }
+    .light {
+      top: 73%;
+      left: 63%;
+    }
+  }
+
+  &--lights-off {
+    right: 0;
+
+    .but {
+      top: 25%;
+      left: 13%;
+    }
+    .i {
+      top: 30.2%;
+      left: 13%;
+    }
+    .was {
+      top: 35.4%;
+      left: 13%;
+    }
+    .all {
+      top: 40.6%;
+      left: 13%;
+    }
+    .alone {
+      top: 45.8%;
+      left: 13%;
+    }
+    .right {
+      top: 70%;
+      left: 67%;
+    }
+  }
+
+  .text {
+    position: absolute;
+    font-size: clamp(14px, 1.6vw, 22px);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transition: opacity 450ms ease-in-out;
+
+    &.is-visible {
+      opacity: 1;
+    }
+  }
+
+  // these buttons group the click-handling (hover & active states)
+  // but their children are positioned within text-container (not this button group)
+  .text-button {
+    position: static;
+    display: block;
+    width: 0;
+    height: 0;
+    padding: 0;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    pointer-events: none;
+
+    .text {
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+
+      &.is-visible {
+        pointer-events: auto;
+      }
+    }
+
+    &:hover .text,
+    &:focus-visible .text {
+      color: $text-color-hover;
+    }
+
+    &:active .text {
+      color: $text-color-active;
+    }
+  }
+}

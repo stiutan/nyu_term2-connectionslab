@@ -1,0 +1,163 @@
+body {
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #0c0c0c;
+  color: #a3a3a3;
+  font-family: "Gabarito", sans-serif;
+  font-size: 1em;
+}
+
+.main-container {
+  position: relative;
+  height: 100%;
+}
+
+.loading-container {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.img-container-outer {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.img-container-outer .img-container-inner {
+  position: relative;
+  flex: none;
+  height: 166.6667vh;
+  aspect-ratio: 1170/2532;
+}
+.img-container-outer .img-container-inner .img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: fill;
+     object-fit: fill;
+  cursor: pointer;
+  transition: opacity 300ms ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+.img-container-outer .img-container-inner .img.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.text-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--text-container-width, 25%);
+  pointer-events: none;
+}
+.text-container--lights-on {
+  left: 0;
+}
+.text-container--lights-on .there {
+  top: 13.5%;
+  left: 13%;
+}
+.text-container--lights-on .were {
+  top: 17.5%;
+  left: 25%;
+}
+.text-container--lights-on .two {
+  top: 30%;
+  left: 61%;
+}
+.text-container--lights-on .shadows {
+  top: 34%;
+  left: 41%;
+}
+.text-container--lights-on .and {
+  top: 49%;
+  left: 23%;
+}
+.text-container--lights-on .only {
+  top: 65%;
+  left: 42%;
+}
+.text-container--lights-on .one {
+  top: 69%;
+  left: 55%;
+}
+.text-container--lights-on .light {
+  top: 73%;
+  left: 63%;
+}
+.text-container--lights-off {
+  right: 0;
+}
+.text-container--lights-off .but {
+  top: 25%;
+  left: 13%;
+}
+.text-container--lights-off .i {
+  top: 30.2%;
+  left: 13%;
+}
+.text-container--lights-off .was {
+  top: 35.4%;
+  left: 13%;
+}
+.text-container--lights-off .all {
+  top: 40.6%;
+  left: 13%;
+}
+.text-container--lights-off .alone {
+  top: 45.8%;
+  left: 13%;
+}
+.text-container--lights-off .right {
+  top: 70%;
+  left: 67%;
+}
+.text-container .text {
+  position: absolute;
+  font-size: clamp(14px, 1.6vw, 22px);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transition: opacity 450ms ease-in-out;
+}
+.text-container .text.is-visible {
+  opacity: 1;
+}
+.text-container .text-button {
+  position: static;
+  display: block;
+  width: 0;
+  height: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  pointer-events: none;
+}
+.text-container .text-button .text {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.text-container .text-button .text.is-visible {
+  pointer-events: auto;
+}
+.text-container .text-button:hover .text, .text-container .text-button:focus-visible .text {
+  color: #e7d060;
+}
+.text-container .text-button:active .text {
+  color: #c7a82c;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Lights and Shadows</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💡</text></svg>" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="loading-container">loading...</div>
+
+      <div class="img-container-outer">
+        <div class="img-container-inner">
+          <img class="img img--lights-on" src="assets/lights-on.jpeg" />
+          <img class="img img--lights-off" src="assets/lights-off-1.jpeg" />
+          <img class="img img--lights-off-2" src="assets/lights-off-2.jpeg" />
+        </div>
+      </div>
+
+      <div class="text-container text-container--lights-on">
+        <span class="text there">there</span>
+        <span class="text were">were</span>
+        <button class="text-button text-button--two-shadows" type="button">
+          <span class="text two">two</span>
+          <span class="text shadows">shadows</span>
+        </button>
+        <span class="text and">and</span>
+        <span class="text only">only</span>
+        <button class="text-button text-button--one-light" type="button">
+          <span class="text one">one</span>
+          <span class="text light">light</span>
+        </button>
+      </div>
+
+      <div class="text-container text-container--lights-off">
+        <span class="text but">but</span>
+        <span class="text i">i</span>
+        <span class="text was">was</span>
+        <span class="text all">all</span>
+        <span class="text alone">alone</span>
+        <button class="text-button text-button--alone-right" type="button">
+          <span class="text right">...right?</span>
+        </button>
+      </div>
+    </main>
+  </body>
+</html>

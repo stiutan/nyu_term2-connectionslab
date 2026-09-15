@@ -4,7 +4,7 @@ body {
   box-sizing: border-box;
   overflow: hidden;
   background: #0c0c0c;
-  color: #a3a3a3;
+  color: #e9e7e7;
   font-family: "Gabarito", sans-serif;
   font-size: 1em;
 }
@@ -26,17 +26,18 @@ body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   scroll-behavior: smooth;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
+.img-container-outer.is-loaded {
+  overflow-y: auto;
+}
 .img-container-outer .img-container-inner {
   position: relative;
   flex: none;
-  height: 166.6667vh;
-  aspect-ratio: 1170/2532;
 }
 .img-container-outer .img-container-inner .img {
   position: absolute;

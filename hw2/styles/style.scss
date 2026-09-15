@@ -1,6 +1,6 @@
 $background-color: #0c0c0c;
 
-$text-color: #a3a3a3;
+$text-color: #e9e7e7;
 $text-color-hover: #e7d060;
 $text-color-active: #c7a82c;
 
@@ -32,17 +32,20 @@ body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   scroll-behavior: smooth;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 
+  // prevent scrolling while loading
+  &.is-loaded {
+    overflow-y: auto;
+  }
+
   .img-container-inner {
     position: relative;
     flex: none;
-    height: 166.6667vh;
-    aspect-ratio: 1170 / 2532;
 
     .img {
       position: absolute;

@@ -24,20 +24,28 @@ async function finishLoading() {
   ]);
 
   if (results.every((result) => result.status === "fulfilled")) {
-    const mainWidth = mainContainer.clientWidth;
-    const imgWidth = imgContainerInner.getBoundingClientRect().width;
+    // set image size on load -- only show 60% of img
+    const imgInnerContainerHeight = imgContainer.clientHeight / 0.6;
+    const imgInnerContainerWidth =
+      (imgInnerContainerHeight * imgLightsOn.naturalWidth) /
+      imgLightsOn.naturalHeight;
+    imgContainerInner.style.height = `${imgInnerContainerHeight}px`;
+    imgContainerInner.style.width = `${imgInnerContainerWidth}px`;
 
-    const textContainerWidth = Math.max(0, (mainWidth - imgWidth) / 2);
-
-    // calculate how much space text has on sides of image based on rendering
+    // set text width based on remaining space beside img
+    const textContainerWidth = Math.max(
+      0,
+      (imgContainer.clientWidth - imgInnerContainerWidth) / 2,
+    );
     mainContainer.style.setProperty(
       "--text-container-width",
       `${textContainerWidth}px`,
     );
 
-    isLoadingDone = true;
-
     imgLightsOn.classList.add("is-visible");
+    imgContainer.classList.add("is-loaded");
+
+    isLoadingDone = true;
     loadingContainer.remove();
   }
 }

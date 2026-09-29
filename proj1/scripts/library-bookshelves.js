@@ -35,13 +35,15 @@ function renderBooks(books) {
     // when mouse presses down (diff from 'click' event)
     // take this as if the user pulled the book off the shelf
     bookDiv.addEventListener("mousedown", () => {
-      bookDiv.classList.add("clicked");
-
       // update poison view
       viewedBooks.add(bookDiv);
       const progress = viewedBooks.size / maxViewedBooks;
       const poisonLevel = Math.pow(progress, 2);
       updatePoisonLevel(poisonLevel);
+
+      // make new clicked book lay on top of others
+      bookDiv.classList.add("clicked");
+      bookDiv.style.zIndex = viewedBooks.size;
 
       if (viewedBooks.size >= maxViewedBooks) {
         triggerPoisonEnding();

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🦠%3C/text%3E%3C/svg%3E" />
+    <title>A Poisonous Library</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="inner-content header">
+        <p class="pre-title">A virtual library of poisonous books</p>
+
+        <h1 class="title">
+          Some books<br />
+          <em>should</em> be judged<br />
+          by their <em>covers.</em>
+        </h1>
+
+        <p class="description">
+          This is a virtual collection of mass-produced, nineteenth century
+          (1800s) books tested to have arsenical emerald green pigments in their
+          bookbindings. These toxic, heavy metal, components may be in their
+          book cloth, paper wrapping or covering, endpapers, paper labels or
+          onlays, leather onlays, and textblock edges.
+        </p>
+      </div>
+
+      <div class="inner-content bookshelf-grid"></div>
+
+      <div class="inner-content footer">
+        <a
+          href="https://sites.udel.edu/poisonbookproject/resources/arsenical-books-database/"
+          target="_blank">
+          The Poison Book Project
+        </a>
+      </div>
+    </div>
+
+    <div class="finale">
+      <p class="finale-text"></p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="./scripts/helpers.js"></script>
+    <script src="./scripts/gradient-background.js"></script>
+    <script src="./scripts/poison-overlay.js"></script>
+    <script src="./scripts/library-bookshelves.js"></script>
+  </body>
+</html>

@@ -5,7 +5,7 @@ async function loadBooks() {
   renderBooks(books);
 }
 
-let viewedBooks = 0;
+let viewedBooks = new Set();
 const maxViewedBooks = 10;
 
 function renderBooks(books) {
@@ -38,16 +38,14 @@ function renderBooks(books) {
       bookDiv.classList.add("clicked");
 
       // update poison view
-      const progress = ++viewedBooks / maxViewedBooks;
+      viewedBooks.add(bookDiv);
+      const progress = viewedBooks.size / maxViewedBooks;
       const poisonLevel = Math.pow(progress, 2);
       updatePoisonLevel(poisonLevel);
-    });
 
-    // when mouse leaves, take this as if the user moves on
-    // to a diff bookshelf and close the book
-    // consider: soft fade away? diff animation?
-    bookDiv.addEventListener("mouseleave", () => {
-      bookDiv.classList.remove("clicked");
+      if (viewedBooks.size >= maxViewedBooks) {
+        triggerPoisonEnding();
+      }
     });
 
     bookshelves[colIndex].appendChild(bookDiv);

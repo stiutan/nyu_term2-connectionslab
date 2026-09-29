@@ -17,7 +17,7 @@ void main() {
     discard;
   }
 
-  float noise = random(vUv * 500.0 + floor(uTime * 30.0));
+  float noise = random(vUv * 250.0 + floor(uTime * 30.0));
   
   float scanline = sin(vUv.y * 400.0);
   scanline = scanline * 0.5 + 0.5;

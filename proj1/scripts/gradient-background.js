@@ -151,8 +151,8 @@ gradientCamera.position.z = 50; // move cam away from plane to see gradient prop
 
 async function initializeGradientBg() {
   const [vertexShader, fragmentShader] = await Promise.all([
-    loadShader("../shaders/gradient.vert"),
-    loadShader("../shaders/gradient.frag"),
+    loadShader("./shaders/gradient.vert"),
+    loadShader("./shaders/gradient.frag"),
   ]);
 
   const geometry = getFullSizedPlaneGeometry();

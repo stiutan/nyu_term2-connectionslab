@@ -5,7 +5,7 @@ async function loadShader(path) {
 
 function setUpFullSizedRenderer(renderer, id) {
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
 
   renderer.domElement.id = id;
   document.body.appendChild(renderer.domElement);

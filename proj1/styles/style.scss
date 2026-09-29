@@ -25,7 +25,7 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 100;
+  z-index: 200;
   pointer-events: none; /* don't block hover states beneath */
 }
 
@@ -39,6 +39,10 @@ body {
   padding: 80px;
   width: 100%;
   color: $poison-white;
+
+  &.inactive {
+    visibility: hidden;
+  }
 
   /* chromatic splitting */
   filter: drop-shadow(
@@ -104,7 +108,7 @@ body {
     &:nth-child(3) {
       .book-card {
         position: absolute;
-        top: 0;
+        top: -4px;
         left: 12px;
       }
     }
@@ -113,7 +117,7 @@ body {
     &:nth-child(5) {
       .book-card {
         position: absolute;
-        top: 0;
+        top: -4px;
         right: 12px;
       }
     }
@@ -138,28 +142,29 @@ body {
   .book-card {
     pointer-events: none;
     width: 180px;
-    min-height: 224px;
+    min-height: 240px;
     height: auto;
     opacity: 0;
     visibility: hidden;
     background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 2;
+    transition: opacity 250ms ease;
   }
 
   &:hover {
     .book-marker {
       background: #d3a157;
-      transform: scaleY(1.15);
     }
   }
-
-  &.clicked:hover {
+  
+  &.clicked {
     cursor: grabbing;
-
+    
     .book-marker {
-      transform: rotate(12deg);
+      background: #d3a157;
+      transform: scaleY(1.25);
     }
 
     .book-card {
@@ -201,6 +206,11 @@ body {
   a {
     color: $poison-white;
     font-family: "Instrument Serif", serif;
+    transition: color 150ms ease;
+
+    &:hover {
+      color: #d3a157;
+    }
   }
 }
 
@@ -212,7 +222,7 @@ body {
   justify-content: center;
   background: #000;
   color: $poison-white;
-  z-index: 200;
+  z-index: 100;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -229,6 +239,11 @@ body {
     text-align: center;
     text-transform: lowercase;
     white-space: pre-line;
+    filter: drop-shadow(
+        calc(var(--poison-level, 0) * 3px) 0 rgba(255, 0, 0, 0.35)
+      )
+      drop-shadow(calc(var(--poison-level, 0) * -3px) 0 rgba(0, 255, 255, 0.35));
+    animation: finale-jitter 450ms steps(2, end) infinite;
   }
 }
 
@@ -254,6 +269,32 @@ body {
   }
 
   100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes finale-jitter {
+  0%, 30% {
+    transform: translateX(0);
+  }
+
+  35% {
+    transform: translateX(calc(var(--poison-level, 0) * -2px));
+  }
+
+  40% {
+    transform: translateX(calc(var(--poison-level, 0) * 4px));
+  }
+
+  45% {
+    transform: translateX(calc(var(--poison-level, 0) * -1px));
+  }
+
+  50% {
+    transform: translateX(calc(var(--poison-level, 0) * 3px));
+  }
+
+  55%, 100% {
     transform: translateX(0);
   }
 }

@@ -54,13 +54,7 @@ function updatePoisonLevel(value) {
   }
 
   poisonMaterial.uniforms.uPoison.value = value;
-
   document.body.style.setProperty("--poison-level", value);
-
-  if (value >= 1 && !poisonFinaleTriggered) {
-    poisonFinaleTriggered = true;
-    triggerPoisonEnding();
-  }
 }
 
 function animatePoisonOverlay(time = 0) {
@@ -75,21 +69,28 @@ function animatePoisonOverlay(time = 0) {
 }
 
 function triggerPoisonEnding() {
+  const content = document.querySelector(".content");
   const finale = document.querySelector(".finale");
   const finaleText = document.querySelector(".finale-text");
 
-  setTimeout(() => {
-    finale.classList.add("active");
+  if (!poisonFinaleTriggered) {
+    poisonFinaleTriggered = true;
 
     setTimeout(() => {
-      typeText(finaleText, "you have been poisoned. :(", () => {
-        setTimeout(() => {
-          finaleText.textContent += "\n\n";
-          typeText(finaleText, "i hope the reads were worth it. :)");
-        }, 1000);
-      });
-    }, 1200);
-  }, 500);
+      content.classList.add("inactive");
+      finale.classList.add("active");
+      updatePoisonLevel(0.6);
+
+      setTimeout(() => {
+        typeText(finaleText, "you have been poisoned.", () => {
+          setTimeout(() => {
+            finaleText.textContent += "\n\n";
+            typeText(finaleText, "i hope the reads were worth it.");
+          }, 1200);
+        });
+      }, 1200);
+    }, 1800);
+  }
 }
 
 function typeText(element, text, onComplete) {

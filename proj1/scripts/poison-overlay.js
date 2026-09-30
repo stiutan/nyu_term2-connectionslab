@@ -27,6 +27,7 @@ async function initializePoisonOverlay() {
     loadShader("./shaders/poison.vert"),
     loadShader("./shaders/poison.frag"),
   ]);
+
   poisonMaterial = new THREE.ShaderMaterial({
     uniforms: {
       uPoison: { value: 0.0 },
@@ -36,6 +37,7 @@ async function initializePoisonOverlay() {
     fragmentShader,
     transparent: true,
   });
+
   const mesh = new THREE.Mesh(geometry, poisonMaterial);
 
   poisonScene.add(mesh);
@@ -48,69 +50,49 @@ initializePoisonOverlay();
 /** external funcs */
 
 function updatePoisonLevel(value) {
-  console.log("poison level: ", value);
-  if (!poisonMaterial) {
-    return;
+  if (poisonMaterial) {
+    poisonMaterial.uniforms.uPoison.value = value;
+    document.body.style.setProperty("--poison-level", value);
   }
-
-  poisonMaterial.uniforms.uPoison.value = value;
-  document.body.style.setProperty("--poison-level", value);
 }
 
 function animatePoisonOverlay(time = 0) {
-  requestAnimationFrame(animatePoisonOverlay);
-
-  if (!poisonMaterial) {
-    return;
+  if (poisonMaterial) {
+    poisonMaterial.uniforms.uTime.value = time * 0.001;
+    poisonRenderer.render(poisonScene, poisonCamera);
   }
 
-  poisonMaterial.uniforms.uTime.value = time * 0.001;
-  poisonRenderer.render(poisonScene, poisonCamera);
+  requestAnimationFrame(animatePoisonOverlay);
 }
 
-function triggerPoisonEnding() {
+async function triggerPoisonEnding() {
   const content = document.querySelector(".content");
   const finale = document.querySelector(".finale");
-  const finaleText = document.querySelector(".finale-text");
 
   if (!poisonFinaleTriggered) {
     poisonFinaleTriggered = true;
 
-    setTimeout(() => {
-      content.classList.add("inactive");
-      finale.classList.add("active");
-      updatePoisonLevel(0.6);
+    await wait(1800);
+    // hide content and unhide finale
+    content.classList.add("inactive");
+    finale.classList.add("active");
+    // lessen poison visuals -- too hard to read text at max visuals
+    updatePoisonLevel(0.6);
 
-      setTimeout(() => {
-        typeText(finaleText, "you have been poisoned.", () => {
-          setTimeout(() => {
-            finaleText.textContent += "\n\n";
-            typeText(finaleText, "i hope the reads were worth it.");
-          }, 1200);
-        });
-      }, 1200);
-    }, 1800);
+    await wait(1200);
+    await typeFinaleText("you have been poisoned.");
+
+    await wait(1200);
+    await typeFinaleText("\n\ni hope the reads were worth it.");
   }
 }
 
-function typeText(element, text, onComplete) {
-  let index = 0;
 
-  function typeNextLetter() {
-    if (index >= text.length) {
-      if (onComplete) {
-        onComplete();
-      }
+async function typeFinaleText(text) {
+  const finaleText = document.querySelector(".finale-text");
 
-      return;
-    }
-
-    element.textContent += text[index];
-
-    index++;
-
-    setTimeout(typeNextLetter, 100);
+  for (let letter of text) {
+    await wait(100);
+    finaleText.textContent += letter;
   }
-
-  typeNextLetter();
 }

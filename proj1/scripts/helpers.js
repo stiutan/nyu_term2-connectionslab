@@ -10,3 +10,9 @@ function setUpFullSizedRenderer(renderer, id) {
   renderer.domElement.id = id;
   document.body.appendChild(renderer.domElement);
 }
+
+function wait(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}

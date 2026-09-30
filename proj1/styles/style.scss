@@ -248,53 +248,19 @@ body {
 }
 
 @keyframes poison-jitter {
-  0% {
-    transform: translateX(0);
-  }
-
-  15% {
-    transform: translateX(calc(var(--poison-level, 0) * -3px));
-  }
-
-  40% {
-    transform: translateX(calc(var(--poison-level, 0) * 5px));
-  }
-
-  60% {
-    transform: translateX(calc(var(--poison-level, 0) * -2px));
-  }
-
-  80% {
-    transform: translateX(calc(var(--poison-level, 0) * 4px));
-  }
-
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(0) }
+  15% { transform: translateX(calc(var(--poison-level, 0) * -3px)) }
+  40% { transform: translateX(calc(var(--poison-level, 0) * 5px)) }
+  60% { transform: translateX(calc(var(--poison-level, 0) * -2px)) }
+  80% { transform: translateX(calc(var(--poison-level, 0) * 4px)) }
+  100% { transform: translateX(0) }
 }
 
 @keyframes finale-jitter {
-  0%, 30% {
-    transform: translateX(0);
-  }
-
-  35% {
-    transform: translateX(calc(var(--poison-level, 0) * -2px));
-  }
-
-  40% {
-    transform: translateX(calc(var(--poison-level, 0) * 4px));
-  }
-
-  45% {
-    transform: translateX(calc(var(--poison-level, 0) * -1px));
-  }
-
-  50% {
-    transform: translateX(calc(var(--poison-level, 0) * 3px));
-  }
-
-  55%, 100% {
-    transform: translateX(0);
-  }
+  0%, 30% { transform: translateX(0) }
+  35% { transform: translateX(calc(var(--poison-level, 0) * -2px)) }
+  40% { transform: translateX(calc(var(--poison-level, 0) * 4px)) }
+  45% { transform: translateX(calc(var(--poison-level, 0) * -1px)) }
+  50% { transform: translateX(calc(var(--poison-level, 0) * 3px)) }
+  55%, 100% { transform: translateX(0) }
 }

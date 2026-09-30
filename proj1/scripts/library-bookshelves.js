@@ -35,7 +35,7 @@ function renderBooks(books) {
     // when mouse presses down (diff from 'click' event)
     // take this as if the user pulled the book off the shelf
     bookDiv.addEventListener("mousedown", () => {
-      // update poison view
+      // update poison view with parabolic slope (more surprising than linear)
       viewedBooks.add(bookDiv);
       const progress = viewedBooks.size / maxViewedBooks;
       const poisonLevel = Math.pow(progress, 2);
@@ -45,6 +45,7 @@ function renderBooks(books) {
       bookDiv.classList.add("clicked");
       bookDiv.style.zIndex = viewedBooks.size;
 
+      // trigger ending once max viewed books is hit
       if (viewedBooks.size >= maxViewedBooks) {
         triggerPoisonEnding();
       }

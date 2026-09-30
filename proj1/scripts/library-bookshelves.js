@@ -56,15 +56,15 @@ function renderBooks(books) {
 
 function getBookInnerHtml(book) {
   return `
-    <div class="book-marker"></div>
+    <div class="book-spine"></div>
 
-    <div class="book-card">
-      <div class="book-card-top">
+    <div class="book-cover">
+      <div class="book-cover-top-text">
         <div class="book-title">${book.title}</div>
         <div class="book-author">by ${book.author}</div>
       </div>
 
-      <div class="book-card-bottom">
+      <div class="book-cover-bottom-text">
         <div class="book-year">${book.year}</div>
         <div class="book-material">toxic ${book.toxicMaterial}</div>
       </div>

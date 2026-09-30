@@ -95,12 +95,12 @@ body {
   row-gap: 24px;
   align-content: start;
 }
-.bookshelf-grid .bookshelf:nth-child(1) .book-card, .bookshelf-grid .bookshelf:nth-child(2) .book-card, .bookshelf-grid .bookshelf:nth-child(3) .book-card {
+.bookshelf-grid .bookshelf:nth-child(1) .book-cover, .bookshelf-grid .bookshelf:nth-child(2) .book-cover, .bookshelf-grid .bookshelf:nth-child(3) .book-cover {
   position: absolute;
   top: -4px;
   left: 12px;
 }
-.bookshelf-grid .bookshelf:nth-child(4) .book-card, .bookshelf-grid .bookshelf:nth-child(5) .book-card {
+.bookshelf-grid .bookshelf:nth-child(4) .book-cover, .bookshelf-grid .bookshelf:nth-child(5) .book-cover {
   position: absolute;
   top: -4px;
   right: 12px;
@@ -111,13 +111,13 @@ body {
   width: 4px;
   height: 32px;
 }
-.book .book-marker {
+.book .book-spine {
   height: 100%;
   width: 100%;
   background: #ededed;
   transition: background 150ms ease, opacity 150ms ease, transform 150ms ease;
 }
-.book .book-card {
+.book .book-cover {
   pointer-events: none;
   width: 180px;
   min-height: 240px;
@@ -130,22 +130,22 @@ body {
   z-index: 2;
   transition: opacity 250ms ease;
 }
-.book:hover .book-marker {
+.book:hover .book-spine {
   background: #d3a157;
 }
 .book.clicked {
   cursor: grabbing;
 }
-.book.clicked .book-marker {
+.book.clicked .book-spine {
   background: #d3a157;
   transform: scaleY(1.25);
 }
-.book.clicked .book-card {
+.book.clicked .book-cover {
   opacity: 1;
   visibility: visible;
 }
 
-.book-card {
+.book-cover {
   padding: 18px 12px;
   display: flex;
   flex-direction: column;
@@ -155,16 +155,16 @@ body {
   color: #b77511;
   overflow-wrap: anywhere;
 }
-.book-card .book-card-top {
+.book-cover .book-cover-top-text {
   font-size: 14px;
 }
-.book-card .book-card-top .book-title {
+.book-cover .book-cover-top-text .book-title {
   font-weight: 700;
 }
-.book-card .book-card-bottom {
+.book-cover .book-cover-bottom-text {
   font-size: 12px;
 }
-.book-card .book-card-bottom .book-material {
+.book-cover .book-cover-bottom-text .book-material {
   text-transform: lowercase;
   text-wrap: pretty;
 }

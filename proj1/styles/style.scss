@@ -106,7 +106,7 @@ body {
     &:nth-child(1),
     &:nth-child(2),
     &:nth-child(3) {
-      .book-card {
+      .book-cover {
         position: absolute;
         top: -4px;
         left: 12px;
@@ -115,7 +115,7 @@ body {
 
     &:nth-child(4),
     &:nth-child(5) {
-      .book-card {
+      .book-cover {
         position: absolute;
         top: -4px;
         right: 12px;
@@ -129,7 +129,7 @@ body {
   width: 4px;
   height: 32px;
 
-  .book-marker {
+  .book-spine {
     height: 100%;
     width: 100%;
     background: $poison-white;
@@ -139,7 +139,7 @@ body {
       transform 150ms ease;
   }
 
-  .book-card {
+  .book-cover {
     pointer-events: none;
     width: 180px;
     min-height: 240px;
@@ -154,7 +154,7 @@ body {
   }
 
   &:hover {
-    .book-marker {
+    .book-spine {
       background: #d3a157;
     }
   }
@@ -162,19 +162,19 @@ body {
   &.clicked {
     cursor: grabbing;
     
-    .book-marker {
+    .book-spine {
       background: #d3a157;
       transform: scaleY(1.25);
     }
 
-    .book-card {
+    .book-cover {
       opacity: 1;
       visibility: visible;
     }
   }
 }
 
-.book-card {
+.book-cover {
   padding: 18px 12px;
   display: flex;
   flex-direction: column;
@@ -184,7 +184,7 @@ body {
   color: #b77511;
   overflow-wrap: anywhere;
 
-  .book-card-top {
+  .book-cover-top-text {
     font-size: 14px;
 
     .book-title {
@@ -192,7 +192,7 @@ body {
     }
   }
 
-  .book-card-bottom {
+  .book-cover-bottom-text {
     font-size: 12px;
 
     .book-material {
